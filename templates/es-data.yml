@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring 
   name: elasticsearch-data
   labels:
     app: elasticsearch
@@ -9,7 +9,7 @@ metadata:
 spec:
   serviceName: elasticsearch-data
   # This is number of nodes that we want to run:
-  replicas: {{ data_node.replicas }}
+  replicas: 1
   selector:
     matchLabels:
       app: elasticsearch
@@ -90,7 +90,7 @@ spec:
           # NOTE: you can increase these resources  
           resources:
             limits:
-              memory: {{ data_node.memory_limit }}
+              memory: 4Gi
 
           # spec.template.spec.containers[elasticsearch].env
           env:
@@ -101,7 +101,7 @@ spec:
             
             # NOTE: You can increase the heap size
             - name: ES_JAVA_OPTS
-              value: -Xms{{ data_node.heap_size }} -Xmx{{ data_node.heap_size }}
+              value: -Xms2g -Xmx2g
 
             - name: node.master
               value: "false"
@@ -114,7 +114,7 @@ spec:
             
             # NOTE: the cluster name; update this
             - name: cluster.name
-              value: {{ cluster_name }}
+              value: es-cluster
             - name: node.name
               valueFrom:
                 fieldRef:
@@ -133,10 +133,10 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: {{ data_node.storage_class }}
+        storageClassName: standard
         resources:
           requests:
-            storage: {{ data_node.volume_size }}Gi
+            storage: 4Gi
 ---
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
