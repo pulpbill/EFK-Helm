@@ -1,5 +1,5 @@
 # EFK
-EasticSearch Fluent Bit and Kibana for K8s (and some other things, like Beats/Filebeats) at AWS:
+ElasticSearch Fluent Bit and Kibana Helm chart for K8s (and some other things, like Beats/Filebeats) at AWS:
 
 ## First steps:
 Get yourself a running Kubernetes cluster:
