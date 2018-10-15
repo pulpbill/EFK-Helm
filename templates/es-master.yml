@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring
   name: elasticsearch-master
   labels:
     component: elasticsearch
@@ -85,7 +85,7 @@ spec:
               value: "false"
 
             - name: cluster.name
-              value: {{ cluster_name }}
+              value: es-cluster
             - name: node.name
               valueFrom:
                 fieldRef:
