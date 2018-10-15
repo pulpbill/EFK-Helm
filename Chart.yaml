@@ -1,3 +1,4 @@
 apiVersion: v1
 description: ElasticSearch Fluent Bit and Kibana for K8s
 name: efk
+namespace: monitoring
