@@ -34,4 +34,4 @@ spec:
     - port: 9200
       name: http
     - port: 9300
-name: node-to-node
+      name: node-to-node
