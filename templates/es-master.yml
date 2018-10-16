@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring
   name: elasticsearch-master
   labels:
     component: elasticsearch
@@ -69,7 +69,7 @@ spec:
           # spec.template.spec.containers[elasticsearch].env
           env:
             - name: discovery.zen.ping.unicast.hosts
-              value: "elasticsearch-master.{{ namespace }}.svc.cluster.local,elasticsearch.{{ namespace }}.svc.cluster.local"
+              value: "elasticsearch-master.monitoring.svc.cluster.local,elasticsearch.monitoring.svc.cluster.local"
             - name: ES_JAVA_OPTS
               value: -Xms512m -Xmx512m
 
@@ -105,7 +105,7 @@ spec:
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring
   name: elasticsearch-master
 spec:
   maxUnavailable: 1

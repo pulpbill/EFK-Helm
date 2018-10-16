@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring
   name: elasticsearch-data
   labels:
     app: elasticsearch
@@ -97,7 +97,7 @@ spec:
             
             # NOTE: This will tell the elasticsearch node where to connect to other nodes to form a cluster
             - name: discovery.zen.ping.unicast.hosts
-              value: "elasticsearch-master.{{ namespace }}.svc.cluster.local,elasticsearch.{{ namespace }}.svc.cluster.local"
+              value: "elasticsearch-master.monitoring.svc.cluster.local,elasticsearch.monitoring.svc.cluster.local"
             
             # NOTE: You can increase the heap size
             - name: ES_JAVA_OPTS
@@ -141,7 +141,7 @@ spec:
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  namespace: {{ namespace }}
+  namespace: monitoring
   name: elasticsearch-data
 spec:
   maxUnavailable: 1
