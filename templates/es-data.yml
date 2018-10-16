@@ -148,4 +148,4 @@ spec:
   selector:
     matchLabels:
       app: elasticsearch
-role: data
+      role: data
