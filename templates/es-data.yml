@@ -144,7 +144,7 @@ metadata:
   namespace: monitoring
   name: elasticsearch-data
 spec:
-  maxUnavailable: 1
+  maxUnavailable: 3
   selector:
     matchLabels:
       app: elasticsearch
