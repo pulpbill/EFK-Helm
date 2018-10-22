@@ -17,4 +17,7 @@ kubectl create namespace monitoring
 
 - https://github.com/helm/charts/tree/master/stable/fluent-bit
 
+### Reference:
+- https://github.com/fluent/fluent-bit
 
+- https://fluentbit.io/ 
